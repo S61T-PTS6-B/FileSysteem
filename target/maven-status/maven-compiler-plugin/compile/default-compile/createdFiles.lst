@@ -1,6 +1,6 @@
 calculations\TrafficJamSeriesOfLocationsOnRoad.class
-calculations\TrafficJamCalculator.class
 Controller\ControllerBean.class
 Controller\FileSysteemConnect.class
 Reciever\JMSBean.class
+calculations\TrafficJamCalculator.class
 model\Location.class

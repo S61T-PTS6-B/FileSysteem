@@ -72,29 +72,6 @@ public class TrafficJamCalculator {
 
         locations = helplist;
 
-        Location testloc1 = new Location("auto1", 0.1, 0.1, new Date().getTime());
-        testloc1.setRoad("road1");
-        Location testloc2 = new Location("auto2", 0.1, 0.1, new Date().getTime());
-        testloc2.setRoad("road1");
-        Location testloc3 = new Location("auto3", 0.1, 0.1, new Date().getTime());
-        testloc3.setRoad("road2");
-        Location testloc4 = new Location("auto4", 0.1, 0.1, new Date().getTime());
-        testloc4.setRoad("road3");
-        Location testloc5 = new Location("auto5", 0.1, 0.1, new Date().getTime());
-        testloc5.setRoad("road14");
-        Location testloc6 = new Location("auto6", 0.1, 0.1, new Date().getTime());
-        testloc6.setRoad("road1");
-        Location testloc7 = new Location("auto7", 0.1, 0.1, new Date().getTime());
-        testloc7.setRoad("road1");
-
-        locations.add(testloc1);
-        locations.add(testloc2);
-        locations.add(testloc3);
-        locations.add(testloc4);
-        locations.add(testloc5);
-        locations.add(testloc6);
-        locations.add(testloc7);
-
         //Stap 4: Kijken welke locaties op een snelweg liggen
         // - Lijst van snelweg namen hebben
         // - Als de naam van de locatie een snelweg is, maak een lijst aan van die snelweg
@@ -126,7 +103,7 @@ public class TrafficJamCalculator {
         
         List<String> activeTrafficJams = new ArrayList<>();
 
-        String fileString = "<br /><br />Files: <br /><br />";
+        String fileString = "<br /><br />Traffic jams: <br /><br />";
 
         for (TrafficJamSeriesOfLocationsOnRoad tjs : seriesOfLocationsOnRoad) {
             if (tjs.getLocations().size() > 1) {
@@ -149,7 +126,7 @@ public class TrafficJamCalculator {
                 System.out.println("Traffic jam ENDED on road: " + tjRoad);
                 Client client = ClientBuilder.newClient();
                     client
-                            .target("http://145.93.80.153:8080/RekeningrijdersApplicatie/rest/trafficjam/Add/" + tjRoad.replace(" ", "+"))
+                            .target("http://145.93.80.153:8080/RekeningrijdersApplicatie/rest/trafficjam/Remove/" + tjRoad.replace(" ", "+"))
                             .request()
                             .get();
             }

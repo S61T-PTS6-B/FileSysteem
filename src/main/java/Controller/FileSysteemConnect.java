@@ -7,13 +7,14 @@ package Controller;
 
 import calculations.TrafficJamCalculator;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import model.Location;
 import org.json.simple.parser.ParseException;
 
 /**
  *
- * @author casva
+ * @author Max
  */
 public class FileSysteemConnect {
     
@@ -37,6 +38,9 @@ public class FileSysteemConnect {
     }
 
     public String getTrafficJams() {
+        while (busy == true) {
+            
+        }
         return trafficJams;
     }
     
@@ -77,8 +81,9 @@ public class FileSysteemConnect {
         else {
             throw new Exception("Multithreading error! Report to Max Breuer");
         }
-        List<Location> copyList = locations;
         busy = false;
-        trafficJams = TrafficJamCalculator.checkForTrafficJam(copyList);
+        List<Location> copyList = new ArrayList<>(locations);
+        String result = TrafficJamCalculator.checkForTrafficJam(copyList);
+        trafficJams = result;
     }
 }
